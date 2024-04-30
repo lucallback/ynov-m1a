@@ -1,14 +1,14 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "=3.0.1"
     }
   }
   backend "remote" {
     organization = "CICDM1A"
     workspaces {
-       name = "ynov-m1a-ws"
+      name = "ynov-m1a-ws"
     }
   }
 }
@@ -26,7 +26,7 @@ resource "random_pet" "vm-pet" {
 resource "azurerm_resource_group" "rgtest" {
   name     = "rg-${random_pet.rg-pet.id}-001"
   location = "France Central"
-  tags     = {env = "test", team = "developers"}
+  tags     = { env = "test", team = "developers" }
 }
 
 resource "azurerm_virtual_network" "vm_network" {
