@@ -7,6 +7,7 @@
 ## Requirements
 
 - Login in Azure via CLI `az login`
+- Create [OIDC for Azure](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-cli%2Clinux)
 
 ## Terraform
 
