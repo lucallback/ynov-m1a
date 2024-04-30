@@ -13,8 +13,9 @@ terraform {
   }
 }
 
-variable "ssh_pub_key" {
-  type = string
+variable "SSH_PUB_KEY" {
+  type    = string
+  default = ""
 }
 
 provider "azurerm" {
@@ -80,7 +81,7 @@ resource "azurerm_linux_virtual_machine" "vm-test" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = var.ssh_pub_key
+    public_key = var.SSH_PUB_KEY
   }
 
   os_disk {
