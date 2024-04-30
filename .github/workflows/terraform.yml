@@ -46,6 +46,9 @@ jobs:
     - name: Terraform Format
       run: terraform fmt -check
 
+    - name: Export SSH public key
+      run: export TF_VAR_SSH_PUB_KEY=${{ vars.SSH_PUB_KEY }}
+
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false

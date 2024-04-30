@@ -1,13 +1,14 @@
 # CI/CD
 
-## Credentials
-
-- Create an ssh key in `~/.ssh/id_rsa.pub`
-
 ## Requirements
 
 - Login in Azure via CLI `az login`
 - Create [OIDC for Azure](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-cli%2Clinux)
+- Add following secrets to Terraform Cloud variables (avalaible from Azure Service Principle) : 
+    - ARM_CLIENT_ID 
+    - ARM_CLIENT_SECRET 
+    - ARM_SUBSCRIPTION_ID 
+    - ARM_TENANT_ID 
 
 ## Terraform
 
