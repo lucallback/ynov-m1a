@@ -76,7 +76,7 @@ resource "azurerm_linux_virtual_machine" "vm-test" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = ${{ vars.SSH_PUB_KEY }}
   }
 
   os_disk {
