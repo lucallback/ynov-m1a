@@ -14,7 +14,7 @@ terraform {
 }
 
 variable "ssh_pub_key" {
-  type = string
+  type    = string
   default = ""
 }
 
