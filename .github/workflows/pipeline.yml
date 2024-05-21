@@ -55,6 +55,15 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
 
+
+  install-docker:
+    needs: terraform
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
   sonarcloud:
     needs: terraform
     runs-on: ubuntu-latest
@@ -68,7 +77,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  dagger:
+  build-and-push:
     needs: sonarcloud
     name: build-and-push
     runs-on: ubuntu-latest
@@ -81,4 +90,9 @@ jobs:
         with:
           version: "latest"
           verb: call
-          args: build --build-src ./front
+          args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --password=env:DOCKER_PASSWORD 
+        env:
+            DOCKER_REGISTRY: ghcr.io
+            DOCKER_IMAGE_NAME: ${{ github.repository }}
+            DOCKER_USERNAME: ${{ github.actor }}
+            DOCKER_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
