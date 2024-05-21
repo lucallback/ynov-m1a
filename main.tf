@@ -1,27 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=3.0.1"
-    }
-  }
-  backend "remote" {
-    organization = "CICDM1A"
-    workspaces {
-      name = "ynov-m1a-ws"
-    }
-  }
-}
-
-variable "SSH_PUB_KEY" {
-  type    = string
-  default = ""
-}
-
-provider "azurerm" {
-  features {}
-}
-
 resource "random_pet" "rg-pet" {
 }
 
@@ -95,12 +71,4 @@ resource "azurerm_linux_virtual_machine" "vm-test" {
     sku       = "22_04-lts"
     version   = "latest"
   }
-}
-
-output "public_ip_address" {
-  value = azurerm_public_ip.vm-pip.ip_address
-}
-
-output "rg" {
-  value = azurerm_resource_group.rgtest.name
 }
