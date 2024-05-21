@@ -90,7 +90,7 @@ jobs:
         with:
           version: "latest"
           verb: call
-          args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --password=env:DOCKER_PASSWORD 
+          args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --passwordVar=DOCKER_PASSWORD 
         env:
             DOCKER_REGISTRY: ghcr.io
             DOCKER_IMAGE_NAME: ${{ github.repository }}
