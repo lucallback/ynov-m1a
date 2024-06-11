@@ -29,4 +29,4 @@
 
 - create `.env` file from `.env.example`
 - `source .env`
-- Test locally the build and push function `dagger call build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --password=env:DOCKER_PASSWORD`
+- Test locally the build and push function `dagger call build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --token=env:GITHUB_TOKEN`

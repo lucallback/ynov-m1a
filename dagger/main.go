@@ -5,7 +5,6 @@ package main
 
 import (
 	"context"
-	"os"
 )
 
 type M1A struct{}
@@ -17,7 +16,7 @@ func (m *M1A) BuildAndPush(
 	registry string,
 	imageName string,
 	username string,
-	passwordVar string,
+	token *Secret,
 ) (string, error) {
 	ctr := dag.Container().
 		From("docker.io/node:18").
@@ -25,9 +24,8 @@ func (m *M1A) BuildAndPush(
 		WithWorkdir("/app").
 		WithExec([]string{"npm", "install"}).
 		WithExec([]string{"npm", "run", "build"})
-
 	prodImage := dag.Container().
-		WithRegistryAuth(registry, username, dag.SetSecret("password", os.Getenv(passwordVar))).
+		WithRegistryAuth(registry, username, token).
 		From("docker.io/nginx:1.25.5-alpine").
 		WithDirectory("/usr/share/nginx/html", ctr.Directory("/app/dist"))
 
