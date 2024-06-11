@@ -81,6 +81,8 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@lucallback'
+      - run: npm version minor
+        working-directory: ./front
       - run: npm ci
         working-directory: ./front
       - run: npm publish
@@ -104,6 +106,6 @@ jobs:
           args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --token=env:GITHUB_TOKEN 
         env:
             DOCKER_REGISTRY: ghcr.io
-            DOCKER_IMAGE_NAME: ghcr.io/${{ github.repository }}/front
+            DOCKER_IMAGE_NAME: ghcr.io/${{ github.repository }}/front:${{ github.sha }}
             DOCKER_USERNAME: ${{ github.actor }}
             GITHUB_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
