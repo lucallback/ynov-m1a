@@ -1,0 +1,7 @@
+{
+    "name": "@lucallback/fs-package",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/npm/security-holder"
+    }
+}
