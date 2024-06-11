@@ -16,6 +16,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@lucallback'
+      - run: cat /home/runner/work/_temp/.npmrc
       - run: npm ci
         working-directory: ./front
       - run: npm publish

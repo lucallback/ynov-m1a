@@ -2,7 +2,7 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "terraform" ]
   pull_request:
 
 permissions:
@@ -93,6 +93,6 @@ jobs:
           args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --passwordVar=DOCKER_PASSWORD 
         env:
             DOCKER_REGISTRY: ghcr.io
-            DOCKER_IMAGE_NAME: ${{ github.repository }}
+            DOCKER_IMAGE_NAME: ghcr.io/${{ github.repository }}/front
             DOCKER_USERNAME: ${{ github.actor }}
             DOCKER_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
