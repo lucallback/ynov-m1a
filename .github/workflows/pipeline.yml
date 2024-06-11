@@ -2,8 +2,7 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "terraform" ]
-  pull_request:
+    branches: [ "main" ]
 
 permissions:
   id-token: write
