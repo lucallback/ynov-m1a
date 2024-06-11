@@ -15,8 +15,10 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@lucaribou'
+          scope: '@lucallback'
       - run: npm ci
+        working-directory: ./front
       - run: npm publish
+        working-directory: ./front
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
