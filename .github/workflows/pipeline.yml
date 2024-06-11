@@ -101,9 +101,9 @@ jobs:
         with:
           version: "latest"
           verb: call
-          args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --passwordVar=DOCKER_PASSWORD 
+          args: build-and-push --build-src ./front --registry=$DOCKER_REGISTRY --image-name=$DOCKER_IMAGE_NAME --username=$DOCKER_USERNAME --token=env:GITHUB_TOKEN 
         env:
             DOCKER_REGISTRY: ghcr.io
             DOCKER_IMAGE_NAME: ghcr.io/${{ github.repository }}/front
             DOCKER_USERNAME: ${{ github.actor }}
-            DOCKER_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+            GITHUB_TOKEN: ${{ secrets.REGISTRY_PASSWORD }}
